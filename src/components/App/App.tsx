@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useDebounce } from "use-debounce";
-import { fetchNotes } from "../services/noteService";
-import NoteList from "../components/NoteList/NoteList";
-import SearchBox from "../components/SearchBox/SearchBox";
-import Pagination from "../components/Pagination/Pagination";
-import Modal from "../components/Modal/Modal";
-import NoteForm from "../components/NoteForm/NoteForm";
-import StatusLoader from "../components/StatusLoader/StatusLoader";
-import StatusError from "../components/StatusError/StatusError";
+import { fetchNotes } from "../../services/noteService";
+import NoteList from "../NoteList/NoteList";
+import SearchBox from "../SearchBox/SearchBox";
+import Pagination from "../Pagination/Pagination";
+import Modal from "../Modal/Modal";
+import NoteForm from "../NoteForm/NoteForm";
+import StatusLoader from "../StatusLoader/StatusLoader";
+import StatusError from "../StatusError/StatusError";
 import css from "./App.module.css"; 
 
 const NOTES_PER_PAGE = 12;
