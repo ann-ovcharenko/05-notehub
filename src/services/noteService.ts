@@ -1,5 +1,5 @@
-import { Note, NoteCreationData, NoteListItem } from "../types/note";
-import axios, { AxiosResponse } from "axios";
+import type { Note, NoteCreationData, NoteListItem } from "../types/note";
+import axios, { type AxiosResponse } from "axios";
 
 export interface FetchNotesParams {
   page: number;

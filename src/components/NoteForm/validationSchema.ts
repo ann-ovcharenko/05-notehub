@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import { NoteTag } from '../../types/note';
+import type { NoteTag } from '../../types/note';
 
 const validTags: NoteTag[] = ['Todo', 'Work', 'Personal', 'Meeting', 'Shopping'];
 

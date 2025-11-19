@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { createNote } from '../../services/noteService';
-import { NoteCreationData, NoteTag } from '../../types/note';
+import type { NoteCreationData, NoteTag } from '../../types/note';
 import { NoteSchema } from './validationSchema'; 
 import css from './NoteForm.module.css'; 
 
