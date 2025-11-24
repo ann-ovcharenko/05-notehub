@@ -1,5 +1,10 @@
-import type { Note, NoteCreationData, NoteListItem } from "../types/note";
+import type { Note, NoteCreationData } from "../types/note";
 import axios, { type AxiosResponse } from "axios";
+
+interface ApiNotesResponse {
+  notes: Note[];
+  totalPages: number;
+}
 
 export interface FetchNotesParams {
   page: number;
@@ -7,22 +12,16 @@ export interface FetchNotesParams {
   search?: string;
 }
 
-export interface FetchNotesResponse {
-  data: NoteListItem[];
-  meta: {
-    total: number; 
-    pages: number; 
-    page: number;
-    perPage: number;
-  };
-}
+export type FetchNotesResponse = ApiNotesResponse;
 
 const BASE_URL = "https://notehub-public.goit.study/api";
 
 const TOKEN = import.meta.env.VITE_NOTEHUB_TOKEN;
 
-if (typeof TOKEN !== 'string' || !TOKEN) {
-  throw new Error("Не знайдено токен авторизації VITE_NOTEHUB_TOKEN. Перевірте файл .env.local.");
+if (typeof TOKEN !== "string" || !TOKEN) {
+  throw new Error(
+    "Не знайдено токен авторизації VITE_NOTEHUB_TOKEN. Перевірте файл .env.local."
+  );
 }
 
 const noteApi = axios.create({
@@ -38,7 +37,7 @@ export const fetchNotes = async ({
   perPage,
   search,
 }: FetchNotesParams): Promise<FetchNotesResponse> => {
-  const response: AxiosResponse<any> = await noteApi.get(
+  const response: AxiosResponse<ApiNotesResponse> = await noteApi.get(
     "/notes",
     {
       params: {
@@ -49,17 +48,7 @@ export const fetchNotes = async ({
     }
   );
 
-  const apiData = response.data;
-  
-  return {
-    data: apiData.notes, 
-    meta: {
-      total: apiData.totalPages * perPage, 
-      pages: apiData.totalPages,
-      page: page,
-      perPage: perPage,
-    },
-  };
+  return response.data;
 };
 
 export const createNote = async (data: NoteCreationData): Promise<Note> => {

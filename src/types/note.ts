@@ -7,17 +7,9 @@ export interface Note {
   tag: NoteTag;
   createdAt: string;
   updatedAt: string;
-  owner: string;
 }
 
 export interface NoteCreationData {
-  title: string;
-  content: string;
-  tag: NoteTag;
-}
-
-export interface NoteListItem {
-  id: string;
   title: string;
   content: string;
   tag: NoteTag;
